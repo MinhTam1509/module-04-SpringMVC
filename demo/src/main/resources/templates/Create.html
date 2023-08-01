@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CreateStudent</title>
+    <style>
+        table {
+            border: 1px solid #000;
+        }
+
+        th, td {
+            border: 1px dotted #555;
+        }
+    </style>
+</head>
+<body>
+<caption>Create Student</caption>
+<br>
+<a th:href="@{/home}">
+    <button>Back</button>
+</a>
+<table>
+    <form action="/create" th:object="${student}" method="post">
+        <p>Name</p>
+        <label>
+            <input name="name" th:field="*{name}" placeholder="Enter name" type="text" />
+        </label>
+        <p>Email address</p>
+        <label>
+            <input name="email_address" th:field="*{email}" placeholder="Enter email" type="email" />
+        </label>
+        <p>Date of Birth</p>
+        <label>
+            <input name="DOB" th:field="*{dateOfBirth}" type="date" />
+        </label>
+        <p>Address</p>
+        <label>
+            <input name="address" th:field="*{address}" placeholder="Enter address" type="text" />
+        </label>
+        <p>Phone Number</p>
+        <label>
+            <input name="phone_number" th:field="*{phoneNumber}" placeholder="Enter phone number" type="text" />
+        </label>
+        <p>class</p>
+        <select>
+            <option value="">Select class</option>
+            <option th:each="classroom : ${classroomList}" th:value="${classroom.id}" th:text="${classroom.name}"></option>
+        </select>
+        <br>
+        <a th:href="@{/home}">
+            <button type="submit">Create Student</button>
+        </a>
+    </form>
+</table>
+</body>
+</html>
